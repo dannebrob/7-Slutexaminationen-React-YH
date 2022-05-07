@@ -1,0 +1,110 @@
+:root {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.App {
+  background-color: #38846d;
+  width: 100vw;
+  height: 100vh;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-img {
+  height: 100vh;
+}
+
+.right-img {
+  height: 100vh;
+}
+
+.header {
+  position: absolute;
+  z-index: 99;
+  width: 80vw;
+  height: 30vh;
+  top: 40%;
+  left: 25%;
+}
+
+/*Menu */
+
+header {
+  width: 100vw;
+  height: 30px;
+}
+
+section {
+  height: auto;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: beige;
+}
+
+main {
+  margin: auto 0;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-and-price > h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+.coffe-info > p {
+  margin-bottom: 1rem;
+}
+
+.menu-container {
+  flex-direction: column;
+  display: flex;
+  align-items: flex-start;
+}
+
+article {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 0px;
+}
+.add {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 1.22rem;
+  min-width: 1.2rem;
+  background: black;
+  border-radius: 50%;
+}
+.add > img {
+  width: 1.2rem;
+}
+
+.coffe-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 1rem;
+  width: 100%;
+}
+.title-and-price {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Status */
+
+.status {
+  background-color: #e5674e;
+  height: 100%;
+  color: aliceblue;
+}
