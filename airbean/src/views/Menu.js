@@ -28,7 +28,7 @@ function Menu(props) {
       </header>
 
       <main>
-        <div className="title">
+        <div className="menu-title">
           <h1>Meny</h1>
         </div>
         <div className="menu-container">{coffeElement}</div>

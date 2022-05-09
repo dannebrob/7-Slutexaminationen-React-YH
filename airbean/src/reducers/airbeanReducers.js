@@ -1,13 +1,16 @@
-const initialState = {
-  cart: [],
-};
+// const initialState = {
+//   cart: [],
+// };
 
-const airbeanReducers = (state = initialState, action) => {
+let counterReduucer = (state = 0, action) => {
   switch (action.type) {
-    case "ADD_ITEM":
-      return {
-        ...state,
-        cart: action.payload,
-      };
+    case "INCRAMENT":
+      return state + 1;
+    case "DECRAMENT":
+      return state - 1;
+    default:
+      return state;
   }
 };
+
+export default counterReduucer;

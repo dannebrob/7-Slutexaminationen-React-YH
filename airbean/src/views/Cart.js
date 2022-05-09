@@ -1,11 +1,39 @@
 import headerImg from "../assets/graphics/graphics-header.svg";
 import footerImg from "../assets/graphics/graphics-footer.svg";
 import OrderItem from "../components/OrderItem";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 function Cart(props) {
-  console.log(props);
+  const [orderList, setOrderList] = useState([]);
 
-  let newCart = props.filter();
+  const order = useSelector((state) => state.order);
+  // console.log(props);
+
+  useEffect(() => {
+    if (order) {
+      console.log("i useeffect", order);
+      const results = Object.keys(order).map((coffee) => {
+        return {
+          key: coffee,
+          value: order[coffee],
+          price: "??kr",
+        };
+      });
+      setOrderList(results);
+    }
+  }, [order]);
+
+  const list = orderList.map((obj) => {
+    return (
+      <div>
+        <h1>{obj.key}</h1>
+        <h1>{obj.value}</h1>
+      </div>
+    );
+  });
+
+  //
   return (
     <section>
       <header>
@@ -16,8 +44,7 @@ function Cart(props) {
         <div className="order-container">
           <h1>Din Beställning</h1>
           {/*Map over order*/}
-
-          <OrderItem />
+          {list}
 
           <h3>Total price: XX</h3>
         </div>

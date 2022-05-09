@@ -4,21 +4,34 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-// import { legacy_createStore } from "redux";
+import { createStore } from "redux";
 import { Provider } from "react-redux";
-import airbeanReducers from "./reducers/airbeanReducers";
+import allReducers from "./reducers";
 
-// const store = legacy_createStore(
-//   airbeanReducers,
-//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-// );
+// Store
+
+// Actions
+// function that retuns a object
+
+// Reducers
+//function that retuns a object
+// How is the init state
+// An action, switch to know wich action to run.
+
+// Dispatch
+
+let store = createStore(
+  allReducers,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      {/* <Provider store={store}> */}
-      <App />
-      {/* </Provider> */}
+      <Provider store={store}>
+        <App />
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );

@@ -24,18 +24,25 @@
 
 .header {
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: 99;
-  width: 80vw;
-  height: 30vh;
-  top: 40%;
-  left: 25%;
+  width: 100vw;
+  height: 100vh;
 }
 
+.header img {
+  width: 20rem;
+}
 /*Menu */
 
 header {
   width: 100vw;
   height: 30px;
+}
+header img {
+  width: 100%;
 }
 
 section {
@@ -54,12 +61,20 @@ main {
   align-items: center;
 }
 
-.title-and-price > h1 {
-  font-size: 1.5rem;
+.title {
+  font-size: 1.4rem;
   margin: 0;
 }
-.coffe-info > p {
-  margin-bottom: 1rem;
+.title::after {
+  content: ".................";
+}
+.price {
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.desctiption {
+  margin-top: -0.2rem;
 }
 
 .menu-container {
@@ -72,7 +87,6 @@ article {
   display: flex;
   align-items: center;
   width: 100%;
-  margin-bottom: 0px;
 }
 .add {
   cursor: pointer;
@@ -101,6 +115,12 @@ article {
   justify-content: space-between;
 }
 
+footer {
+  width: 100%;
+}
+footer img {
+  width: 100%;
+}
 /* Status */
 
 .status {
