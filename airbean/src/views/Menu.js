@@ -1,10 +1,13 @@
 import headerImg from "../assets/graphics/graphics-header.svg";
 import footerImg from "../assets/graphics/graphics-footer.svg";
+import { Link } from "react-router-dom";
+
+import { useState, useEffect } from "react";
 
 import DrinkItem from "../components/DrinkItem";
 
 function Menu(props) {
-  // console.log(props.func);
+  console.log(props);
   let clickFunction = props.func;
   let arr = props.data;
 
@@ -28,10 +31,13 @@ function Menu(props) {
       </header>
 
       <main>
+        <Link to="/cart">
+          <button>Go to cart</button>
+        </Link>
         <div className="menu-title">
           <h1>Meny</h1>
+          {coffeElement}
         </div>
-        <div className="menu-container">{coffeElement}</div>
       </main>
 
       <footer>

@@ -4,7 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 function DrinkItem(props) {
   const dispatchCoffee = useDispatch();
 
-  console.log(props);
+  // console.log("this is props: ", props);
+
   return (
     <div>
       <article>
@@ -12,11 +13,8 @@ function DrinkItem(props) {
           <img
             onClick={() => {
               dispatchCoffee({
-                type: "INCRAMENT_COFFEE",
-                payload: props.title,
-                // drink: props.title
-                // value: staate.value
-                // price: props.price,
+                type: "ADD_COFFEE",
+                payload: { item: props.title, price: props.price, amount: 1 },
               });
             }}
             src={add}

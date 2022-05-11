@@ -40,11 +40,8 @@ function App() {
       <DevNav />
       <Routes>
         <Route path="/" element={<Home />} exact />
-        <Route
-          path="/menu"
-          element={<Menu data={menu} func={clickHandler} />}
-        />
-        <Route path="/cart" element={<Cart store={store} />} />
+        <Route path="/menu" element={<Menu data={menu} />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/status" element={<Status />} />
         <Route path="*" element={<Error />} />
       </Routes>
