@@ -1,19 +1,33 @@
 import arrowUp from "../assets/graphics/arrow-up.svg";
 import arrowDown from "../assets/graphics/arrow-down.svg";
+import { useDispatch } from "react-redux";
 
-function OrderItem() {
+function OrderItem(props) {
+  const dispatchCoffeeAmount = useDispatch();
+
   return (
-    <div class="order-menu flex">
-      <div class="order">
-        <h3>Title</h3>
-        <p> kr</p>
+    <div className="order-menu flex">
+      <div className="order">
+        <h3>{props.item}</h3>
+        <p> {props.price * props.amount}kr</p>
       </div>
-      <div class="order-quantity">
+      <div className="order-quantity">
         <img src={arrowUp} />
-        <h4>1</h4>
+        <h4>{props.amount}</h4>
         <img src={arrowDown} />
       </div>
     </div>
   );
 }
 export default OrderItem;
+
+/* onClick={() => {
+            console.log("clicked!");
+            dispatchCoffeeAmount({
+              type: "INCRAMENT",
+              payload: {
+                incrament: 1,
+              },
+            });
+          }}
+          */

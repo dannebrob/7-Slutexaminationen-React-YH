@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import DrinkItem from "../components/DrinkItem";
 
 function Menu(props) {
-  console.log(props);
+  // console.log(props);
   let clickFunction = props.func;
   let arr = props.data;
 

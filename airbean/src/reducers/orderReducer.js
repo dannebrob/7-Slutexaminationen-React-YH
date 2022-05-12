@@ -1,31 +1,25 @@
 const initialState = [];
 
 const orderReducer = (state = initialState, action) => {
-  console.log(action.payload);
+  // console.log(action.payload);
   switch (action.type) {
-    //Old working:  action = { type: "INCREMENT", payload: "Bryggkaffe"}
-    // New not working = action.payload = { item: 'Bryggkaffe, price: 43, pc: 1}
     case "ADD_COFFEE":
+      console.log(state);
       return addToCart(state, action);
-
-    // case "REMOVE_COFFEE":
-    //   if (!action.payload in state) return state;
-    //   if (state[action.payload] < 2) {
-    //     const newState = { ...state };
-    //     delete newState[action.payload];
-    //     return newState;
-    //   }
-    //   return {
-    //     ...state,
-    //     [action.payload]: state[action.payload] - 1,
-    //   };
     default:
       return state;
   }
 };
 
-//let copy = [ ...array ]
-//let copyObject = { ...object }
+// const incrament = (state, action) => {
+//   return console.log("Incrament");
+//   return {
+//     ...state,
+//     contents: state.contents.map((content, i) =>
+//       i === 1 ? { ...content, text: action.payload } : content
+//     ),
+//   };
+// };
 
 const addToCart = (state, action) => {
   if (state.find((order) => action.payload.item === order.item)) {

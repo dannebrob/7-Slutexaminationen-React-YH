@@ -3,59 +3,47 @@ import footerImg from "../assets/graphics/graphics-footer.svg";
 import OrderItem from "../components/OrderItem";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 function Cart() {
-  // console.log("this is cart props: ", props);
-  const [orderList, setOrderList] = useState([]);
-  console.log(orderList);
-
   const order = useSelector((state) => state.cart);
-  console.log("this is order: ", order);
-  console.log("sprida ut order", ...order);
+  const postApi = useSelector((state) => state.apiPost);
+  console.log("this is postAPI", postApi);
+  const dispatchApi = useDispatch();
 
-  useEffect(() => {
-    if (order) {
-      console.log("i useeffect", order);
-      const results = Object.keys(order).map((coffee) => {
-        console.log("this is coffee in reslult map: ", coffee);
-        console.log("Object.values(coffee): ", Object.values(coffee));
-        return {
-          // key: coffee,
-          // value: order[coffee],
-          // setOrderList(results)
-        };
-      });
-    }
-  }, [order]);
+  const sum = order.reduce((accumulator, object) => {
+    return accumulator + object.price * object.amount;
+  }, 0);
 
-  const list = orderList.map((obj) => {
+  let resAPI;
+
+  const displayOrderItems = order.map((item) => {
     return (
-      <div>
-        <h1>{obj.item}</h1>
-        <h1>{obj.value}</h1>
-        <h1>{obj.price}kr</h1>
-      </div>
+      <OrderItem
+        item={item.item}
+        price={item.price}
+        amount={item.amount}
+        key={item.item}
+      />
     );
   });
 
   const postOrder = () => {
+    console.log("i have posted the order!");
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ title: "React POST Request Example" }),
     };
 
-    const response = fetch(
-      "http://localhost:5000/api/beans",
-      requestOptions
-    ).then((response) => response.json());
+    const response = fetch("http://localhost:5000/api/beans", requestOptions)
+      .then((response) => response.json())
+      .then((data) =>
+        dispatchApi({ type: "FETCH_SUCCESS", payload: { data } })
+      );
 
     //get data from response eta: '',  orderNr: ''
-
-    console.log(response);
   };
-
   return (
     <section>
       <header>
@@ -68,17 +56,13 @@ function Cart() {
         </Link>
         <div className="order-container">
           <h1>Din Beställning</h1>
-          {/*Map over order*/}
-          {list}
+          {displayOrderItems}
 
-          <h3>Total price: XX</h3>
+          <h3>Total price: {sum} ink moms + drönar leverans</h3>
           <Link to="/status">
-            <button onClick={postOrder}>Take my money!</button>
+            <button>Take my money!</button> /*onClick=
           </Link>
         </div>
-
-        {/*cart item: title, total sum, numb of items of sort*/}
-        {/*Total price, 'ink moms + drönar leverans*/}
       </main>
 
       <footer>
@@ -89,3 +73,42 @@ function Cart() {
 }
 
 export default Cart;
+
+// useEffect(() => {
+
+// }, [order]);
+// useEffect(() => {
+//   if(order){
+//     //if order exists
+//
+
+//   }
+// }
+//     ,[order]
+
+// useEffect(() => {
+//   if (order) {
+//     console.log("i useeffect", order);
+
+//     return ''
+
+//     // const results = Object.keys(order).map((coffee) => {
+//     //   console.log("this is coffee in reslult map: ", coffee);
+//     //   console.log("Object.values(coffee): ", Object.values(coffee));
+//     //   return {
+//         // key: coffee,
+//         // value: order[coffee],
+//         // setOrderList(results)
+//       // };
+//     });
+// }, [order]);
+
+// const list = orderList.map((obj) => {
+//   return (
+//     <div>
+//       <h1>{obj.item}</h1>
+//       <h1>{obj.value}</h1>
+//       <h1>{obj.price}kr</h1>
+//     </div>
+//   );
+// });

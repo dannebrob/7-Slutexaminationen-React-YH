@@ -1,40 +1,13 @@
-** TODO **
+Hej ingemar!
+Det är en React app med redux.
 
-/**/ För att få Godkänt ska du: /**/
+Det jag vill göra:
 
-- Gjort enligt Figma skissen (viss variation på färger, typsnitt etc är tillåtet)
-- Använder sig av Redux med en Redux store
-- Gå att lägga till produkter i en varukorg (varukorgen ligger i din Redux store)
-- Hämta alla produkter med fetch
-- Kunna skicka sin order med fetch och alla produkter och få ett svar med en ETA och ordernummer
+1. I views/Cart.js vill jag göra en fetch() genom api:n, där jag skickar en POST med innehållet i min Cart och då uppdaterar mitt state i Redux.
 
-/**/För att Väl Godkänt ska du: /**/
+Det jag vill ha tillbaka är ett objekt med orderNum: 'xxxxxxxx', eta: 'y',
+det skickas till state.apiPost.
 
-- I varukorgen ändra antal/ta bort produkter
-- Eftersom Göteborg fyller 400 år vill Airbean fira med ett kampanjerbjudande! Om du köper en bryggkaffe och en Gustav Adolfsbakelse får du den för ett kampanjpris av 40 kr (49 kr billigare totalt). Det är alltså enbart med denna kombination som kampanjerbjudandet gäller.
+Jag måste använda fetch() då det ingår i uppgiften (Står mer om uppgiften i README.md)
 
-Components:
-
-- Item --- ( Addbtn, {
-  "id":2, "title":"Caffè Doppio", "desc":"Bryggd på månadens bönor", "price":49 }, )
-- CartButton
-- CartItem
-- MenuButton ( Ta mig till menyn från startsidan )
-- Modal ( Cart modal )
-
-Views:
-
-- Home
-- Menu
-- Cart
-- Status
-
-Router:
-
-- index.js
-
-Redux Store:
-
-- Store
-
-- Fetch API
+2. Genom att trycka på en av de ut renderade " < img src={arrowUp} />" vill jag öka värdet i cart.amount med +1. samt minska värdet med liknande {arrowDown}
