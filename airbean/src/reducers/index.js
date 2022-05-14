@@ -5,7 +5,7 @@ import apiReducer from "./apiReducers";
 
 const allReducers = combineReducers({
   cart: orderReducer,
-  apiPost: apiReducers,
+  orderResponse: apiReducer,
 });
 
 export default allReducers;

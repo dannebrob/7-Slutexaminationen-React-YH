@@ -3,7 +3,7 @@ import arrowDown from "../assets/graphics/arrow-down.svg";
 import { useDispatch } from "react-redux";
 
 function OrderItem(props) {
-  const dispatchCoffeeAmount = useDispatch();
+  // const dispatchCoffeeAmount = useDispatch();
 
   return (
     <div className="order-menu flex">
@@ -20,14 +20,3 @@ function OrderItem(props) {
   );
 }
 export default OrderItem;
-
-/* onClick={() => {
-            console.log("clicked!");
-            dispatchCoffeeAmount({
-              type: "INCRAMENT",
-              payload: {
-                incrament: 1,
-              },
-            });
-          }}
-          */

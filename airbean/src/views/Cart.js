@@ -3,19 +3,39 @@ import footerImg from "../assets/graphics/graphics-footer.svg";
 import OrderItem from "../components/OrderItem";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
 function Cart() {
   const order = useSelector((state) => state.cart);
-  const postApi = useSelector((state) => state.apiPost);
-  console.log("this is postAPI", postApi);
+  // const postApi = useSelector((state) => state);
+  // console.log("this is postAPI", postApi);
   const dispatchApi = useDispatch();
+  const navigate = useNavigate();
+  const products = useSelector((state) => state);
 
   const sum = order.reduce((accumulator, object) => {
     return accumulator + object.price * object.amount;
   }, 0);
 
-  let resAPI;
+  function submitProducts() {
+    fetch("http://localhost:5000/api/beans", {
+      method: "POST",
+      body: JSON.stringify(products),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        const returnedData = data;
+        console.log(returnedData);
+        navigate("/status", {
+          state: {
+            eta: data.eta,
+            orderNr: data.orderNr,
+          },
+        });
+        dispatchApi({ type: "FETCH_API_SUCCESS", payload: returnedData });
+      });
+  }
 
   const displayOrderItems = order.map((item) => {
     return (
@@ -28,22 +48,22 @@ function Cart() {
     );
   });
 
-  const postOrder = () => {
-    console.log("i have posted the order!");
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title: "React POST Request Example" }),
-    };
+  // const postOrder = () => {
+  //   console.log("i have posted the order!");
+  //   const requestOptions = {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ title: "React POST Request Example" }),
+  //   };
 
-    const response = fetch("http://localhost:5000/api/beans", requestOptions)
-      .then((response) => response.json())
-      .then((data) =>
-        dispatchApi({ type: "FETCH_SUCCESS", payload: { data } })
-      );
+  //   const response = fetch("http://localhost:5000/api/beans", requestOptions)
+  //     .then((response) => response.json())
+  //     .then((data) =>
+  //       dispatchApi({ type: "FETCH_SUCCESS", payload: { data } })
+  //     );
 
-    //get data from response eta: '',  orderNr: ''
-  };
+  //   //get data from response eta: '',  orderNr: ''
+  // };
   return (
     <section>
       <header>
@@ -57,11 +77,8 @@ function Cart() {
         <div className="order-container">
           <h1>Din Beställning</h1>
           {displayOrderItems}
-
           <h3>Total price: {sum} ink moms + drönar leverans</h3>
-          <Link to="/status">
-            <button>Take my money!</button> /*onClick=
-          </Link>
+          <button onClick={submitProducts}>Take my money!</button> /*onClick=
         </div>
       </main>
 

@@ -11,16 +11,6 @@ const orderReducer = (state = initialState, action) => {
   }
 };
 
-// const incrament = (state, action) => {
-//   return console.log("Incrament");
-//   return {
-//     ...state,
-//     contents: state.contents.map((content, i) =>
-//       i === 1 ? { ...content, text: action.payload } : content
-//     ),
-//   };
-// };
-
 const addToCart = (state, action) => {
   if (state.find((order) => action.payload.item === order.item)) {
     return state.map((order) => {
