@@ -1,8 +1,7 @@
 import headerImg from "../assets/graphics/graphics-header.svg";
 import footerImg from "../assets/graphics/graphics-footer.svg";
 import { Link } from "react-router-dom";
-
-import { useState, useEffect } from "react";
+import OrderButton from "../components/OrderButton";
 
 import DrinkItem from "../components/DrinkItem";
 
@@ -25,15 +24,13 @@ function Menu(props) {
   });
 
   return (
-    <section>
+    <section className="menu">
       <header>
         <img alt={"some text"} src={headerImg}></img>
       </header>
 
       <main>
-        <Link to="/cart">
-          <button>Go to cart</button>
-        </Link>
+        <OrderButton />
         <div className="menu-title">
           <h1>Meny</h1>
           {coffeElement}

@@ -7,7 +7,6 @@ import Cart from "./views/Cart";
 import Menu from "./views/Menu";
 import Status from "./views/Status";
 import Error from "./views/Error";
-import DevNav from "./components/DevNav";
 
 function App() {
   const [menu, setMenu] = useState({});
@@ -29,15 +28,8 @@ function App() {
     fetchProducts();
   }, []);
 
-  function clickHandler(data) {
-    setStore((prev) => ({
-      data: [...prev.data, data],
-    }));
-    console.log(store);
-  }
   return (
     <div className="App">
-      <DevNav />
       <Routes>
         <Route path="/" element={<Home />} exact />
         <Route path="/menu" element={<Menu data={menu} />} />

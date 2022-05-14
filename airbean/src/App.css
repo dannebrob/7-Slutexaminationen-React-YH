@@ -1,6 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,500;1,600&family=Roboto+Mono:wght@400;600;700&display=swap");
+
 :root {
   height: 100vh;
   overflow: hidden;
+  font-family: "Roboto Mono", monospace;
 }
 
 .App {
@@ -35,14 +38,36 @@
 .header img {
   width: 20rem;
 }
+
+/* Components */
+.button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: black;
+  border-radius: 50%;
+  width: 2rem;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.8;
+}
+.image-bag {
+  width: 1rem;
+}
 /*Menu */
 
+.menu {
+  background-color: #f3e4e1;
+}
+
 header {
+  position: relative;
   width: 100vw;
-  height: 30px;
 }
 header img {
-  width: 100%;
+  width: 100vw;
 }
 
 section {
@@ -62,14 +87,14 @@ main {
 }
 
 .title {
-  font-size: 1.4rem;
+  font-size: 1rem;
   margin: 0;
 }
 .title::after {
   content: ".................";
 }
 .price {
-  font-size: 1.4rem;
+  font-size: 1rem;
   margin: 0;
 }
 
@@ -116,6 +141,7 @@ article {
 }
 
 footer {
+  position: relative;
   width: 100%;
 }
 footer img {
