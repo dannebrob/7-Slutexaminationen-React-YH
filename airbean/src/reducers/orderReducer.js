@@ -6,6 +6,8 @@ const orderReducer = (state = initialState, action) => {
     case "ADD_COFFEE":
       console.log(state);
       return addToCart(state, action);
+    case "EMPTY_CART":
+      return (state = initialState);
     default:
       return state;
   }

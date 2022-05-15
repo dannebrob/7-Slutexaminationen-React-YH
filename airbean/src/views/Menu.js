@@ -2,22 +2,26 @@ import headerImg from "../assets/graphics/graphics-header.svg";
 import footerImg from "../assets/graphics/graphics-footer.svg";
 import { Link } from "react-router-dom";
 import OrderButton from "../components/OrderButton";
+import { useSelector } from "react-redux";
 
 import DrinkItem from "../components/DrinkItem";
 
 function Menu(props) {
-  // console.log(props);
-  let clickFunction = props.func;
-  let arr = props.data;
+  const nummberSelector = useSelector((state) => state.cart);
+  let items = props.data;
 
-  const coffeElement = arr.map((item) => {
+  const numberOfOrders = nummberSelector.reduce((acc, object) => {
+    console.log(acc + object.amount);
+    return acc + object.amount;
+  }, 0);
+
+  const coffeElement = items.map((item) => {
     return (
       <DrinkItem
         key={item.id}
         title={item.title}
         desc={item.desc}
         price={item.price}
-        func={clickFunction}
         data={item.title}
       />
     );
@@ -30,7 +34,7 @@ function Menu(props) {
       </header>
 
       <main>
-        <OrderButton />
+        <OrderButton props={numberOfOrders} />
         <div className="menu-title">
           <h1>Meny</h1>
           {coffeElement}

@@ -7,14 +7,12 @@ function OrderItem(props) {
 
   return (
     <div className="order-menu flex">
-      <div className="order">
+      <div className="order-item">
         <h3>{props.item}</h3>
         <p> {props.price * props.amount}kr</p>
       </div>
       <div className="order-quantity">
-        <img src={arrowUp} />
         <h4>{props.amount}</h4>
-        <img src={arrowDown} />
       </div>
     </div>
   );

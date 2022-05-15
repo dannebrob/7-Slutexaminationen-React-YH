@@ -1,18 +1,26 @@
 import headerImg from "../assets/graphics/graphics-header.svg";
 import footerImg from "../assets/graphics/graphics-footer.svg";
 import OrderItem from "../components/OrderItem";
+import MenuButton from "../components/MenuButton";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-function Cart() {
+function Cart(props) {
   const order = useSelector((state) => state.cart);
   const dispatchApi = useDispatch();
   const navigate = useNavigate();
   const products = useSelector((state) => state);
+  const nummberSelector = useSelector((state) => state.cart);
 
+  console.log(nummberSelector);
   const sum = order.reduce((accumulator, object) => {
     return accumulator + object.price * object.amount;
+  }, 0);
+
+  const numberOfOrders = nummberSelector.reduce((acc, object) => {
+    console.log("inside numberOfOrders: ", acc + object.amount);
+    return acc + object.amount;
   }, 0);
 
   function submitProducts() {
@@ -52,13 +60,15 @@ function Cart() {
       </header>
 
       <main>
-        <Link to="/menu">
-          <button className="cart-btn">Go to Menu</button>
-        </Link>
+        <MenuButton props={numberOfOrders} />
         <div className="order-container">
           <h1>Din Beställning</h1>
           {displayOrderItems}
-          <h3>Total price: {sum} ink moms + drönar leverans</h3>
+          <div className="margin-top">
+            <h3>Total price: {sum} kr</h3>
+            <p>ink moms + drönar leverans</p>
+          </div>
+
           <button onClick={submitProducts}>Take my money!</button>
         </div>
       </main>
