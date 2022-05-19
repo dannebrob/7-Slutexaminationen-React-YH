@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import CartCount from "./CartCount";
 
 function OrderButton(props) {
-  console.log("this is the number of orders OrderBtn:", props.props);
   return (
     <Link to="/cart">
       <div className="button">

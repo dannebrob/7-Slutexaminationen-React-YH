@@ -1,11 +1,8 @@
 import add from "../assets/graphics/add.svg";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 function DrinkItem(props) {
   const dispatchCoffee = useDispatch();
-
-  // console.log("this is props: ", props);
-
   return (
     <div>
       <article>
@@ -30,13 +27,6 @@ function DrinkItem(props) {
       </article>
     </div>
   );
-}
-{
-  //TODO //
-  // fix payload to drink, value, price
-  // Add btn on cart page
-  // set init to data from api, save to local storage? Show message to reload app?
-  // css status, cart and error
 }
 
 export default DrinkItem;

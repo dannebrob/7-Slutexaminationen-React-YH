@@ -2,7 +2,6 @@ import headerImg from "../assets/graphics/graphics-header.svg";
 import footerImg from "../assets/graphics/graphics-footer.svg";
 import OrderItem from "../components/OrderItem";
 import MenuButton from "../components/MenuButton";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -19,7 +18,6 @@ function Cart(props) {
   }, 0);
 
   const numberOfOrders = nummberSelector.reduce((acc, object) => {
-    console.log("inside numberOfOrders: ", acc + object.amount);
     return acc + object.amount;
   }, 0);
 
@@ -31,7 +29,6 @@ function Cart(props) {
       .then((response) => response.json())
       .then((data) => {
         const returnedData = data;
-        console.log(returnedData);
         navigate("/status", {
           state: {
             eta: data.eta,

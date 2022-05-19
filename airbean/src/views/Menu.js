@@ -1,6 +1,5 @@
 import headerImg from "../assets/graphics/graphics-header.svg";
 import footerImg from "../assets/graphics/graphics-footer.svg";
-import { Link } from "react-router-dom";
 import OrderButton from "../components/OrderButton";
 import { useSelector } from "react-redux";
 
@@ -11,7 +10,6 @@ function Menu(props) {
   let items = props.data;
 
   const numberOfOrders = nummberSelector.reduce((acc, object) => {
-    console.log(acc + object.amount);
     return acc + object.amount;
   }, 0);
 

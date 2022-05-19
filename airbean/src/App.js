@@ -10,7 +10,6 @@ import Error from "./views/Error";
 
 function App() {
   const [menu, setMenu] = useState({});
-  const [store, setStore] = useState({ data: "" });
 
   const fetchProducts = async () => {
     try {

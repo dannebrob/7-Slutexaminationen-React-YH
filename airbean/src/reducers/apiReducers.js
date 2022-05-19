@@ -11,13 +11,9 @@ let apirespons;
 let apiReducer = (state = initialState, action) => {
   switch (action.type) {
     case "FETCH_API_BEGIN":
-      //Mark the state as loading
-      // console.log("apiRreducer: fetch begins");
-      console.log("this is action in apiReducer: ", action);
-    // postApi();
+    //Mark the state as loading
     case "FETCH_API_SUCCESS":
       // SUCCESS!
-      console.log("success!");
       return {
         ...state,
         eta: [action.payload.eta],
@@ -25,7 +21,6 @@ let apiReducer = (state = initialState, action) => {
       };
     case "FETCH_API_FAILURE":
       //Some error...
-      console.log("something is wrong with the api");
       return state;
     default:
       return state;
@@ -40,13 +35,11 @@ const postApi = () => {
   };
 
   return (dispatch) => {
-    //nameless functions
     // Initial action dispatched
     dispatch({ type: { FETCH_API_BEGIN } });
     // Return promise with success and failure actions
     return fetch("http://localhost:5000/api/beans", requestOptions).then(
       (res) => {
-        console.log("this is: ", apirespons);
         // dispatch({ type: { FETCH_API_SUCCESS }, apiPost: apirespons });
       },
       (err) => dispatch({ type: { FETCH_API_FAILURE }, err })
@@ -55,16 +48,3 @@ const postApi = () => {
 };
 
 export default apiReducer;
-
-//     const response = fetch("http://localhost:5000/api/beans", requestOptions)
-//     .then((response) => response.json())
-//     .then((data) =>
-//       dispatchApi({ type: "FETCH_SUCCESS", payload: { data } })
-//     );
-
-//   get data from response eta: '',  orderNr: ''
-// };
-
-// const postOrder = () => {
-//   console.log("i have posted the order!");
-//
