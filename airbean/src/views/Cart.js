@@ -5,7 +5,7 @@ import MenuButton from "../components/MenuButton";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-function Cart(props) {
+function Cart() {
   const order = useSelector((state) => state.cart);
   const dispatchApi = useDispatch();
   const navigate = useNavigate();

@@ -17,7 +17,6 @@ function App() {
       const data = await response.json();
 
       setMenu(data.menu);
-      // console.log(menu);
     } catch (error) {
       console.log(error);
     }

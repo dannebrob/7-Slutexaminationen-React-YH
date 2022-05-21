@@ -1,10 +1,8 @@
 const initialState = [];
 
 const orderReducer = (state = initialState, action) => {
-  // console.log(action.payload);
   switch (action.type) {
     case "ADD_COFFEE":
-      console.log(state);
       return addToCart(state, action);
     case "EMPTY_CART":
       return (state = initialState);
@@ -12,7 +10,6 @@ const orderReducer = (state = initialState, action) => {
       return state;
   }
 };
-
 const addToCart = (state, action) => {
   if (state.find((order) => action.payload.item === order.item)) {
     return state.map((order) => {
@@ -31,7 +28,6 @@ const addToCart = (state, action) => {
         amount: action.payload.amount,
       },
     ];
-    console.log("this is newState: ", newState);
     return newState;
   }
 };
